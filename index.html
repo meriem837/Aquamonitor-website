@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🌱 aquasmart</title>
+    <style>
+      body {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      .agriculture-pic {
+        width: 100%;
+        border-radius: 0 0 20px 20px;
+        margin: 0 10px;
+      }
+      .image-container {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+
+      h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        color: white;
+        font-size: 50px;
+        font-weight: bold;
+        text-align: center;
+      }
+      .divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        border-bottom: 2px solid #006400;
+      }
+
+      .divider:not(:empty)::before {
+        margin-right: 0.5em;
+      }
+
+      .divider:not(:empty)::after {
+        margin-left: 0.5em;
+      }
+
+      .divider-text {
+        font-size: 18px;
+        font-weight: bold;
+        color: #006400;
+      }
+      .sensors {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 20px;
+        padding: 20px;
+        margin-left: 20px;
+      }
+
+      .sensor-data {
+        background-color: #ebf5ec;
+        border-radius: 12px;
+        width: 160px;
+        height: 120px;
+        text-align: center;
+        padding: 30px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .sensor-data .fake-data {
+        font-size: 28px;
+        font-weight: bold;
+        color: #006400;
+        margin-bottom: 10px;
+      }
+
+      .sensor-data:nth-child(2) {
+        background-color: #46973b;
+        color: white;
+      }
+
+      .sensor-data:nth-child(2) .fake-data {
+        color: white;
+      }
+      .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px auto;
+        gap: 5px;
+        max-width: fit-content;
+      }
+
+      .logo {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1.5px solid #46973b;
+        object-fit: cover;
+      }
+
+      .logo-text {
+        font-size: 12px;
+        font-weight: 600;
+        color: #d0ad00;
+        font-family: Arial, sans-serif;
+      }
+      .plant-type {
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        margin: -15px auto 0;
+        padding: 10px;
+        width: fit-content;
+      }
+      .plant-button {
+        margin: 5px;
+        padding: 5px;
+        font-size: 20px;
+        border-radius: 10px;
+        border-color: #ebf5ec;
+      }
+      .plant-button:hover {
+        background-color: #ebf5ec;
+        cursor: pointer;
+      }
+      .buttons {
+        margin-top: 20px;
+        margin-left: 10px;
+      }
+      .irrigation-operation {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 10px;
+        background-color: #46973b;
+        color: white;
+        margin-right: -22px;
+        margin-top: 15px;
+      }
+
+      .right-side-irrigation {
+        width: 66.66%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      }
+
+      .irrigation-title {
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .right-side-irrigation button {
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: white;
+        color: #46973b;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+      .right-side-irrigation button:hover {
+        color: white;
+        background-color: #006400;
+        border: 1px solid white;
+      }
+      .pic-of-a-pant {
+        width: 33.33%;
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-left: 20px;
+      }
+      .progress {
+        width: 160px;
+        height: 160px;
+        margin-bottom: 30px;
+        position: relative;
+      }
+
+      .outer {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+      }
+
+      .inner {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: #46973b;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #number {
+        font-weight: 600;
+        font-size: 30px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+      }
+      circle {
+        fill: none;
+        stroke: #006400;
+        stroke-width: 20px;
+        stroke-dasharray: 450;
+        stroke-dashoffset: 450;
+      }
+      .animate {
+        animation: anim 5s linear forwards;
+        animation-play-state: running;
+      }
+      @keyframes anim {
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+      svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      h2 {
+        font-size: 15px;
+        margin-bottom: 0;
+      }
+      footer {
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+      .coder {
+        margin-top: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image-container">
+      <img
+        src="aquasmart pic.jpg"
+        class="agriculture-pic"
+        alt="Irrigation Image"
+      />
+      <h1>مرحباً بك</h1>
+    </div>
+    <div class="divider">
+      <span class="divider-text">بيانات المستشعرات</span>
+    </div>
+    <div class="sensors">
+      <div class="sensor-data">
+        <div class="fake-data"><span id="soilHumidity">40</span>%</div>
+        مستشعر رطوبة التربة
+      </div>
+      <div class="sensor-data">
+        <div class="fake-data"><span id="airTemperature">25</span>°C</div>
+        مستشعر درجة الحرارة
+      </div>
+      <div class="sensor-data">
+        <div class="fake-data"><span id="airHumidity">60</span>%</div>
+        مستشعر رطوبة الهواء
+      </div>
+    </div>
+    <div class="logo-container">
+      <img class="logo" src="logo aquasmart.jpeg" />
+      <span class="logo-text">aquasmart</span>
+    </div>
+    <div class="plant-type">
+      ما هو نوع النبتة الذي تزرعها؟
+      <div class="buttons">
+        <button class="plant-button" id="القمح">🌾 القمح</button>
+        <button class="plant-button" id="الشعير">🌿 الشعير</button>
+        <button class="plant-button" id="الزيتون">🫒 الزيتون</button>
+        <button class="plant-button" id="الطماطم">🍅 الطماطم</button>
+        <button class="plant-button" id="الحمضيات">🍊 الحمضيات</button>
+        <button class="plant-button" id="البطاطس">🥔 البطاطس</button>
+        <button class="plant-button" id="البصل">🧅البصل</button>
+        <button class="plant-button" id="الشمندر السكري">
+          🍬 الشمندر السكري
+        </button>
+        <button class="plant-button" id="الذرة">🌽 الذرة</button>
+        <button class="plant-button" id="البطيخ">🍉 البطيخ</button>
+      </div>
+    </div>
+    <div class="irrigation-operation">
+      <div class="right-side-irrigation">
+        <div class="irrigation-title">عملية الري</div>
+        <div class="progress">
+          <div class="outer">
+            <div class="inner">
+              <div id="number">0%</div>
+            </div>
+          </div>
+          <svg
+            xmlns="https://www.w3.org/2000/svg"
+            version="1.1"
+            width="160px"
+            height="160px"
+          >
+            <defs>
+              <lineargradient id="gradientColor">
+                <stop offset="0%" stop-color="#DA22FF" />
+                <stop offset="100%" stop-color="#9733EE" />
+              </lineargradient>
+            </defs>
+            <circle cx="80" cy="80" r="70" stroke-linecap="round" />
+          </svg>
+        </div>
+        <button id="irrigation-button">ابدأ الري</button>
+      </div>
+      <img src="plant illustration.png" class="pic-of-a-pant" />
+    </div>
+    <footer>
+      <h2>📱 تابعونا على إنستغرام!</h2>
+      <a
+        href="https://www.instagram.com/aquasmart._?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+        target="_blank"
+      >
+        اضغط هنا لمتابعتنا</a
+      >
+      <div class="coder">
+        This website was coded with ❤️ by Meriem Elazzaoui
+      </div>
+    </footer>
+  </body>
+  <script>
+    const plants = [
+      { id: "القمح", waterLitersPerDay: 4.3 },
+      { id: "الشعير", waterLitersPerDay: 3.6 },
+      { id: "الزيتون", waterLitersPerDay: 7.1 },
+      { id: "الطماطم", waterLitersPerDay: 5.7 },
+      { id: "الحمضيات", waterLitersPerDay: 8.6 },
+      { id: "البطاطس", waterLitersPerDay: 5 },
+      { id: "البصل", waterLitersPerDay: 4.3 },
+      { id: "الشمندر السكري", waterLitersPerDay: 6.4 },
+      { id: "الذرة", waterLitersPerDay: 7.1 },
+      { id: "البطيخ", waterLitersPerDay: 6.4 },
+    ]; //this data is for the normal conditions which are Air Temperature	23°C, Air Humidity	55%,Soil Moisture	45%;
+    function water(event) {
+      event.preventDefault();
+      const clickedId = event.target.id;
+      const plant = plants.find((p) => p.id === clickedId);
+      processPlant(plant);
+      let buttons = document.querySelector(".buttons");
+      buttons.innerHTML = `استنادًا إلى بيانات الحساسات ونوع النبتة (${
+        plant.id
+      })، تحتاج نبتتك تقريبًا إلى ${Math.round(
+        waterNeeded
+      )} لتر/م² اليوم. يمكنك الآن بدء عملية السقي 😊`;
+    }
+    let waterNeeded;
+    let plantButtons = document.querySelectorAll(".plant-button");
+    plantButtons.forEach((button) => {
+      button.addEventListener("click", water);
+    });
+    function processPlant(plant) {
+      waterNeeded = plant.waterLitersPerDay;
+      let soilHumidity = 40;
+      let airTemperature = 25;
+      let airHumidity = 60;
+      if (soilHumidity > 45) {
+        let extraHumidity = soilHumidity - 45;
+        let soilHumidityPercentage = extraHumidity / 45;
+        waterNeeded = waterNeeded - waterNeeded * soilHumidityPercentage;
+      } else {
+        let neededHumidity = 45 - soilHumidity;
+        percentage = neededHumidity / 45;
+        waterNeeded = waterNeeded + waterNeeded * percentage;
+      }
+      if (airTemperature > 23) {
+        let extraTemperature = airTemperature - 23;
+        let TemperaturePercentage = extraTemperature / 23;
+        waterNeeded = waterNeeded + waterNeeded * TemperaturePercentage;
+      } else {
+        let neededTemperature = 23 - airTemperature;
+        TemperaturePercentage = neededTemperature / 23;
+        waterNeeded = waterNeeded - waterNeeded * TemperaturePercentage;
+      }
+      if (airHumidity > 55) {
+        let extraAirHumidity = airHumidity - 55;
+        let airHumidityPercentage = extraAirHumidity / 55;
+        waterNeeded = waterNeeded - waterNeeded * airHumidityPercentage;
+      } else {
+        let neededAirHumidity = 55 - airHumidity;
+        airHumidityPercentage = neededAirHumidity / 55;
+        waterNeeded = waterNeeded - waterNeeded * airHumidityPercentage;
+      }
+    }
+    // circular progress bar
+    let counter = 0;
+    const intervalTime = 50;
+    let intervalID;
+    let irrigationRunning = false;
+    let irrigationStarted = false;
+    let plantSelected = false;
+
+    const irrigationButton = document.querySelector("#irrigation-button");
+    const number = document.querySelector("#number");
+    const circle = document.querySelector("circle");
+
+    // Only one click listener
+    irrigationButton.addEventListener("click", handleIrrigationAction);
+
+    function handleIrrigationAction(event) {
+      event.preventDefault();
+
+      if (!plantSelected) {
+        alert("المرجو اختيار نوع النبتة أولاً، هذا أمر ضروري.🔔");
+        return;
+      }
+
+      if (!irrigationStarted) {
+        startIrrigation();
+      } else if (irrigationStarted && irrigationRunning) {
+        stopIrrigation();
+      } else if (irrigationStarted && !irrigationRunning) {
+        continueIrrigation();
+      }
+    }
+
+    function startIrrigation() {
+      circle.classList.add("animate");
+      irrigationButton.textContent = "أوقف السقي";
+      irrigationStarted = true;
+      irrigationRunning = true;
+
+      intervalID = setInterval(() => {
+        if (counter >= 100) {
+          clearInterval(intervalID);
+          irrigationButton.textContent = "انتهى السقي";
+          irrigationRunning = false;
+        } else {
+          counter++;
+          number.textContent = `${counter}%`;
+        }
+      }, intervalTime);
+    }
+
+    function stopIrrigation() {
+      clearInterval(intervalID);
+      circle.style.animationPlayState = "paused";
+
+      irrigationRunning = false;
+      irrigationButton.textContent = "تابع السقي";
+    }
+
+    function continueIrrigation() {
+      circle.style.animationPlayState = "running";
+
+      irrigationRunning = true;
+      irrigationButton.textContent = "أوقف السقي";
+
+      intervalID = setInterval(() => {
+        if (counter >= 100) {
+          clearInterval(intervalID);
+          alert("لقد انتهت عملية السقي اليوم ، الى الغد 👋");
+          irrigationButton.textContent = "انتهى السقي";
+          irrigationRunning = false;
+        } else {
+          counter++;
+          number.textContent = `${counter}%`;
+        }
+      }, intervalTime);
+    }
+    plantButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        plantSelected = true;
+      });
+    });
+  </script>
+</html>
