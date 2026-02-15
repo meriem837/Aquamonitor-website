@@ -16,7 +16,9 @@ The AquaMonitor website works as follows:
 
 _Screenshot:_
 
-<img src="screenshots/aquamonitor.png" width="300" style="display: block; margin: 0 auto;">
+<div align="center">
+  <img src="screenshots/aquamonitor.png" width="400">
+</div>
 
 _Live demo:_ [View on Netlify](https://rad-tartufo-6a5f31.netlify.app/)
 
