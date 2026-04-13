@@ -1,7 +1,6 @@
 body {
-  width: 100%;
-  padding: 0;
-  margin: 0;
+  max-width: 500px;
+  margin: auto;
 }
 .agriculture-pic {
   width: 100%;
