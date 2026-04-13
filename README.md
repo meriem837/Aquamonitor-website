@@ -20,7 +20,7 @@ _Screenshot:_
   <img src="screenshots/aquamonitor.png" width="250">
 </div>
 
-_Live demo:_ [View on Netlify](https://rad-tartufo-6a5f31.netlify.app/)
+_Live demo:_ [View on Netlify](https://polite-horse-3b3cba.netlify.app/)
 
 ---
 
